@@ -1,99 +1,82 @@
+// NAVBAR
 $(document).ready(function(){
-    $(window).scroll(function(){
-        if(this.scrollY > 20){
-            $('.navbar').addClass("sticky");
-        }else{
-            $('.navbar').removeClass("sticky");
-        }
-    });
-    $('.menu-btn').click(function(){
-        $('.navbar .menu').toggleClass("active");
-        $('.menu-btn i').toggleClass("active");
-    });
-});
-
-var $messages = $('.messages-content'),
-    d, h, m,
-    i = 0;
-
-$(window).load(function() {
-  $messages.mCustomScrollbar();
-  setTimeout(function() {
-    fakeMessage();
-  }, 100);
-});
-
-function updateScrollbar() {
-  $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-    scrollInertia: 10,
-    timeout: 0
+  $(window).scroll(function(){
+      if(this.scrollY > 20){
+         $('.navbar').addClass("sticky");
+      }else{
+         $('.navbar').removeClass("sticky");
+      }
+      if(this.scrollY > 500){
+          $('.scroll-up-btn').addClass("show");
+      }else{
+          $('.scroll-up-btn').removeClass("show");
+      }
   });
-}
-
-function setDate(){
-  d = new Date()
-  if (m != d.getMinutes()) {
-    m = d.getMinutes();
-    $('<div class="timestamp">' + d.getHours() + ':' + m + '</div>').appendTo($('.message:last'));
-  }
-}
-
-function insertMessage() {
-  msg = $('.message-input').val();
-  if ($.trim(msg) == '') {
-    return false;
-  }
-  $('<div class="message message-personal">' + msg + '</div>').appendTo($('.mCSB_container')).addClass('new');
-  setDate();
-  $('.message-input').val(null);
-  updateScrollbar();
-  setTimeout(function() {
-    fakeMessage();
-  }, 1000 + (Math.random() * 20) * 100);
-}
-
-$('.message-submit').click(function() {
-  insertMessage();
 });
 
-$(window).on('keydown', function(e) {
-  if (e.which == 13) {
-    insertMessage();
-    return false;
-  }
-})
+$('.menu-btn').click(function(){
+    $('.navbar .menu').toggleClass("active");
+    $('.menu-btn i').toggleClass("active");
+});
 
-var Fake = [
-  'Hi there, I\'m Fabio and you?',
-  'Nice to meet you',
-  'How are you?',
-  'Not too bad, thanks',
-  'What do you do?',
-  'That\'s awesome',
-  'Codepen is a nice place to stay',
-  'I think you\'re a nice person',
-  'Why do you think that?',
-  'Can you explain?',
-  'Anyway I\'ve gotta go now',
-  'It was a pleasure chat with you',
-  'Time to make a new codepen',
-  'Bye',
-  ':)'
-]
+// SCROLL UP
+$('.scroll-up-btn').click(function(){
+    $('html').animate({scrollTop: 0});
+});
 
-function fakeMessage() {
-  if ($('.message-input').val() != '') {
-    return false;
-  }
-  $('<div class="message loading new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
-  updateScrollbar();
+// SMOOTH SCROLL
+const menuItens = document.querySelectorAll('.navbar a, .home a');
 
-  setTimeout(function() {
-    $('.message.loading').remove();
-    $('<div class="message new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
-    setDate();
-    updateScrollbar();
-    i++;
-  }, 1000 + (Math.random() * 20) * 100);
+menuItens.forEach(item => {
+    item.addEventListener('click', scrollToIdOnClick);
+});
 
+function getScrollTopByHref(element){
+    const id = element.getAttribute('href');
+    return document.querySelector(id).offsetTop;
 }
+
+function scrollToIdOnClick(event){
+    event.preventDefault();
+    const to = getScrollTopByHref(event.target);
+    
+    scrollToPosition(to);
+}
+
+function scrollToPosition(to){
+    smoothScrollTo(0, to);
+}
+
+/**
+ * Smooth scroll animation
+ * @param {int} endX: destination x coordinate
+ * @param {int} endY: destination y coordinate
+ * @param {int} duration: animation duration in ms
+ */
+function smoothScrollTo(endX, endY, duration) {
+  const startX = window.scrollX || window.pageXOffset;
+  const startY = window.scrollY || window.pageYOffset;
+  const distanceX = endX - startX;
+  const distanceY = endY - startY;
+  const startTime = new Date().getTime();
+
+  duration = typeof duration !== 'undefined' ? duration : 600;
+
+  // Easing function
+  const easeInOutQuart = (time, from, distance, duration) => {
+    if ((time /= duration / 2) < 1) return distance / 2 * time * time * time * time + from;
+    return -distance / 2 * ((time -= 2) * time * time * time - 2) + from;
+  };
+
+  const timer = setInterval(() => {
+    const time = new Date().getTime() - startTime;
+    const newX = easeInOutQuart(time, startX, distanceX, duration);
+    const newY = easeInOutQuart(time, startY, distanceY, duration);
+    if (time >= duration) {
+      clearInterval(timer);
+    }
+    window.scroll(newX, newY);
+  }, 1000 / 60); // 60 fps
+};
+
+
