@@ -236,19 +236,6 @@ section{
     margin-bottom: 20px;
 }
 
-footer{
-    padding: 10px 23px;
-    color: #fff;
-    text-align: center;
-}
-footer span a{
-    color: #009CF8;
-    text-decoration: none;
-}
-footer span a:hover{
-    text-decoration: underline;
-}
-
 /* RESPONSIVE */
 @media (max-width: 895px){
     .home-content{
