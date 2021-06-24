@@ -1,11 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Alatsi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Rubik&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'Alatsi', sans-serif;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
 }
+h1, h2, a, p{
+	font-family: "Rubik", Helvetica, Arial, sans-serif;
+	color: white;
+	font-weight: normal;
+}
+
 body{
     background-color: #0B0D17;
 }
@@ -109,11 +116,11 @@ section{
     width: 40%;
 }
 .home .home-content .right .text{
-    font-size: 50px;
+    font-size: 45px;
     color: #fff;
 }
 .home .home-content .right p{
-    font-size: 20px;
+    font-size: 22px;
     color: #fff;
     margin-bottom: 20px;
 }
@@ -178,6 +185,11 @@ section{
     font-size: 20px;
     color: #fff;
 }
+.chatbot .chatbot-content .left .chat .chat-title span{
+    padding: 5px;
+    border-radius: 10px;
+    background: #0B0D17;
+}
 .chatbot .chatbot-content .left .chat .send-area{
     margin-top: 505px;
     width: 98%;
@@ -214,6 +226,7 @@ section{
 }
 .about .about-content .right .text{
     font-size: 30px;
+    margin-bottom: 10px;
     color: #fff;
 }
 .about .about-content .right p{
@@ -221,6 +234,19 @@ section{
     text-align: justify;
     color: #fff;
     margin-bottom: 20px;
+}
+
+footer{
+    padding: 10px 23px;
+    color: #fff;
+    text-align: center;
+}
+footer span a{
+    color: #009CF8;
+    text-decoration: none;
+}
+footer span a:hover{
+    text-decoration: underline;
 }
 
 /* RESPONSIVE */

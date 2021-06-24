@@ -79,4 +79,3 @@ function smoothScrollTo(endX, endY, duration) {
   }, 1000 / 60); // 60 fps
 };
 
-
