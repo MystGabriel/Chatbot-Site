@@ -13,6 +13,10 @@
     <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
     </div>
+    
+    <div id="progressbar"></div>
+    <div id="scrollPath"></div>
+
     <nav class="navbar">
         <div class="max-width">
             <div class="logo"><a href="#home"><img src="image/logo.png" alt=""></a></div>
@@ -27,52 +31,72 @@
         </div>
     </nav>
 
-    <section class="home" id="home">
-        <div class="max-width">
-            <div class="home-content">
-                <div class="column left">
-                    <img src="image/image-1.png" alt="">
-                </div>
-                <div class="column right">
-                    <div class="text">BEM-VINDO(A)</div>
-                    <p>Aqui podemos tirar todas as suas dúvidas.</p>
-                    <a href="#chatbot">VEJA MAIS</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="chatbot" id="chatbot">
-        <div class="back"></div>
-        <div class="max-width">
-            <div class="chatbot-content">
-                <div class="column left">
-                    <div class="chat">
-                        <div class="chat-title"> <span>doutor</span> chat bot </div>
-                        <div class="send-area"> Qual é a sua dúvida... </div>
+    <div class="container">
+        <section class="home" id="home">
+            <div class="max-width">
+                <div class="home-content">
+                    <div class="column left">
+                        <img src="image/image-1.png" alt="">
+                    </div>
+                    <div class="column right">
+                        <div class="text">BEM-VINDO(A)</div>
+                        <p>Aqui podemos tirar todas as suas dúvidas.</p>
+                        <a href="#chatbot">VEJA MAIS</a>
                     </div>
                 </div>
-                <div class="column right">
-                    <img src="image/image-2.png" alt="">
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="about" id="about">
-        <div class="max-width">
-            <div class="about-content">
-                <div class="column left">
-                    <img src="image/image-3.png" alt="">
-                </div>
-                <div class="column right">
-                    <div class="text">SOBRE</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget lorem vitae nibh convallis convallis nec nec dui. Duis tristique sed lectus ac gravida. Proin elementum eu eros ac feugiat. Quisque et molestie nibh. Nullam risus sapien, luctus id varius vitae, aliquam eu felis. Nulla et varius elit, a rhoncus justo. Vivamus eget odio vitae nisl fermentum vehicula. Mauris porttitor ante quis dolor sodales rutrum.</p>
-                    <P>Vivamus eget neque nulla. Vivamus id turpis a odio laoreet pharetra a et sapien. Ut eleifend ante quam, a pharetra nibh congue sed. Nunc vitae faucibus turpis. Vivamus metus erat, scelerisque eu arcu a, tincidunt fermentum dolor. Cras lobortis non risus sit amet condimentum. Maecenas finibus felis lorem, a ultricies eros pellentesque pharetra. Nullam ac sodales magna. Nunc vestibulum, libero a aliquet viverra, libero lectus convallis turpis, vel rhoncus nulla enim sit amet odio.</p>
+        <section class="chatbot" id="chatbot">
+            <div class="back"></div>
+            <div class="max-width">
+                <div class="chatbot-content">
+                    <div class="column left">
+                        <div class="chat">
+                            <div class="chat-title"> <span>doutor</span> chat bot </div>
+                            <div class="message-area">
+                                <div class="message-content">
+                                    <textarea type="text" placeholder="Qual é a sua dúvida..."></textarea>
+                                    <button id="bot-button" type="submit">Enviar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column right">
+                        <img src="image/image-2.png" alt="">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="about" id="about">
+            <div class="max-width">
+                <div class="about-content">
+                    <div class="column left">
+                        <img src="image/image-3.png" alt="">
+                    </div>
+                    <div class="column right">
+                        <div class="text">SOBRE</div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget lorem vitae nibh convallis convallis nec nec dui. Duis tristique sed lectus ac gravida. Proin elementum eu eros ac feugiat. Quisque et molestie nibh. Nullam risus sapien, luctus id varius vitae, aliquam eu felis. Nulla et varius elit, a rhoncus justo. Vivamus eget odio vitae nisl fermentum vehicula. Mauris porttitor ante quis dolor sodales rutrum.</p>
+                        <P>Vivamus eget neque nulla. Vivamus id turpis a odio laoreet pharetra a et sapien. Ut eleifend ante quam, a pharetra nibh congue sed. Nunc vitae faucibus turpis. Vivamus metus erat, scelerisque eu arcu a, tincidunt fermentum dolor. Cras lobortis non risus sit amet condimentum. Maecenas finibus felis lorem, a ultricies eros pellentesque pharetra. Nullam ac sodales magna. Nunc vestibulum, libero a aliquet viverra, libero lectus convallis turpis, vel rhoncus nulla enim sit amet odio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>Criado por Gabriel S. A. | <i class="far fa-copyright"></i> 2021 Todos os direitos reservados</p>
+                </div>
+                <div class="social">
+                    <i class="fab fa-github"></i>
+                    <i class="fab fa-linkedin-in"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script src="scripts.js"></script>
 </body>

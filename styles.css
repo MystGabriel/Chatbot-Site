@@ -15,6 +15,8 @@ h1, h2, a, p{
 
 body{
     background-color: #0B0D17;
+    width: 100%;
+    height: 100vh;
 }
 .max-width{
     max-width: 1400px;
@@ -23,6 +25,10 @@ body{
 }
 
 /* SECTION STYLE */
+.container{
+    width: 100%;
+    height: 100%;
+}
 section{
     padding-top: 50px;
 }
@@ -85,11 +91,17 @@ section{
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
+    animation: animation 1s ease infinite;
 }
 .scroll-up-btn.show{
     opacity: 1;
     pointer-events: auto;
     bottom: 30px;
+}
+
+@keyframes animation{
+    0%, 100% {transform: translateY(5px);}
+    25% {transform: translateY(0px);}
 }
 
 /* HOME */
@@ -174,7 +186,7 @@ section{
 }
 .chatbot .chatbot-content .left .chat{
     width: 400px;
-    height: 600px;
+    height: 80vh;
     background: #1D233E;
     border-radius: 10px;
     border: solid #0B0D17 4px;
@@ -190,21 +202,49 @@ section{
     border-radius: 10px;
     background: #0B0D17;
 }
-.chatbot .chatbot-content .left .chat .send-area{
-    margin-top: 505px;
+.chatbot .chatbot-content .left .chat .message-area{
+    width: 100%;
+    height: 100%;
+}
+.chatbot .chatbot-content .left .chat .message-area .message-content{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    bottom: 20px;
     width: 98%;
-    height: 40px;
-    padding: 12px;
-    background: #0B0D17;
+    height: 48px;
     border-radius: 10px;
-    font-size: 14px;
+    background-color: #0B0D17;
+}
+.chatbot .chatbot-content .left .chat .message-area .message-content textarea{
+    display: flex;
+    height: 100%;
+    padding: 15px;
+    font-size: 15px;
+    background: none;
+    border: none;
+    outline: none !important;
+    resize: none;
     color: #fff;
+}
+.chatbot .chatbot-content .left .chat .message-area .message-content button{
+    background: #009CF8;
+    border: none;
+    width: 60px;
+    height: 30px;
+    color: #fff;
+    border-radius: 10px;
+    margin: 9px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.chatbot .chatbot-content .left .chat .message-area .message-content button:hover{
+    transform: scale(1.08);
 }
 
 /* ABOUT */
 .about{
     position: relative;
-    display: flex;
     width: 100%;
     height: 100vh;
 }
@@ -234,6 +274,81 @@ section{
     text-align: justify;
     color: #fff;
     margin-bottom: 20px;
+}
+
+/* FOOTER */
+footer{
+    position: relative;
+    width: 100%;
+    height: 48px;
+    clear: both;
+}
+footer .footer-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10%;
+}
+footer .footer-content .social i{
+    font-size: 20px;
+    color: #fff;
+    margin: 0 20px;
+    padding: 10px;
+    transition: all .3s ease;
+}
+footer .footer-content .social i:hover{
+    transform: scale(1.08);
+    background-color: #009CF8;
+    border-radius: 50%;
+}
+
+/* PROGRESS BAR */
+::-webkit-scrollbar{
+    width: 0;
+}
+#scrollPath{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100%;
+}
+#progressbar{
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 10px;
+    background: linear-gradient(to top, #009CF8, #001F8E);
+    animation: animate 5s linear infinite;
+}
+#progressbar::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #009CF8, #001F8E);
+    filter: blur(7px);
+}
+#progressbar::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #009CF8, #001F8E);
+    filter: blur(7px);
+}
+@keyframes animate{
+    0%, 100%{
+        filter: blur(0deg)
+    }
+    50%{
+        filter: blur(360deg);
+    }
 }
 
 /* RESPONSIVE */
@@ -289,6 +404,7 @@ section{
 @media(max-width: 460px){
     .chatbot .chatbot-content .left .chat{
         width: 90vw;
+        height: 90vh;
     }
 }
 @media(max-width: 376px){
